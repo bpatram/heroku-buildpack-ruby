@@ -503,7 +503,7 @@ ERROR
       if name.match(/^node\-/)
         @node_installer.install
       else
-        @fetchers[:buildpack].fetch_untar("#{name}.tgz")
+        @fetchers[:buildpack].fetch_untar("#{@stack}/#{name}.tgz")
       end
     end
   end
@@ -525,7 +525,7 @@ ERROR
         puts "New app detected loading default bundler cache"
         patchlevel = run("ruby -e 'puts RUBY_PATCHLEVEL'").chomp
         cache_name  = "#{LanguagePack::RubyVersion::DEFAULT_VERSION}-p#{patchlevel}-default-cache"
-        @fetchers[:buildpack].fetch_untar("#{cache_name}.tgz")
+        @fetchers[:buildpack].fetch_untar("#{@stack}/#{cache_name}.tgz")
       end
     end
   end
